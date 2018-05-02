@@ -45,6 +45,7 @@
         <activity android:name=".ui.SetActivity" />
         <activity android:name=".ui.MyActivity" />
         <activity android:name=".ui.MovieListActivity" />
+        <activity android:name=".ui.OnlineMovieActivity"/>
     </application>
 
 </manifest>

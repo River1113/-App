@@ -55,5 +55,12 @@ dependencies {
     // 图片加载
     implementation files('libs/glide-3.7.0.jar')
 
+    //GSON解析
     compile 'com.google.code.gson:gson:2.8.2'
+
+    //volley网络 SuperLi
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+
+    //添加 ExoPlayer google 依赖  SuperLi
+    implementation 'com.google.android.exoplayer:exoplayer:r2.3.0'
 }

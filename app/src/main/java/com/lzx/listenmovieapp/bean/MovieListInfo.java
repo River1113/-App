@@ -1,11 +1,13 @@
 package com.lzx.listenmovieapp.bean;
 
+import java.io.Serializable;
+
 /**
  * Author：Road
  * Date  ：2018/4/27
  */
 
-public class MovieListInfo {
+public class MovieListInfo implements Serializable{
     private String img;
     private String name;
     private String desc;
