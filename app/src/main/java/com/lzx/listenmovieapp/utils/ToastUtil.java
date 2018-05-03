@@ -17,7 +17,6 @@ public class ToastUtil {
     public static void show(Context context, String message) {
         show(context, message, Toast.LENGTH_SHORT);
     }
-
     private static Toast mToast;
     private static Handler mHandler = new Handler();
     private static Runnable runnable = new Runnable() {
