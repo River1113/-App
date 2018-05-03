@@ -71,11 +71,11 @@ public class RemotePlayedActivity extends BaseActivity {
                 break;
 
             case R.id.btn_send:
-                ToastUtil.MyToast(this, "发送");
+                ToastUtil.show(this, "发送");
                 break;
 
             case R.id.iv_voice:
-                ToastUtil.MyToast(this, "开始语音");
+                ToastUtil.show(this, "开始语音");
                 break;
         }
     }

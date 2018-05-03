@@ -168,7 +168,7 @@ public class MainActivity extends BaseActivity {
             default:
                 break;
             case R.id.ll_voice:
-                ToastUtil.MyToast(this, "开始语音");
+                ToastUtil.show(this, "开始语音");
                 break;
         }
     }

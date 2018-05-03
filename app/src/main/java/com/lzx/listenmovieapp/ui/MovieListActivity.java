@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+
 /**
  * 设置
  *
  * @author cx
  */
 public class MovieListActivity extends BaseActivity {
-
 
     @BindView(R.id.tv_title)
     TextView tv_title;
@@ -82,17 +82,6 @@ public class MovieListActivity extends BaseActivity {
         Log.e("---","" + list.size());
         System.out.println("总条数"+list.size());
         title = getIntent().getStringExtra("title");
-
-        mData = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            MovieListInfo info = new MovieListInfo();
-            //info.setImg("https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1709857625,355767256&fm=179&w=115&h=161&img.JPEG");
-            info.setImg(list.get(i).getImg());
-            info.setName(list.get(i).getName());
-            info.setDesc(list.get(i).getDesc());
-            info.setScore(list.get(i).getScore());
-            mData.add(info);
-        }
     }
 
     @Override
@@ -108,7 +97,7 @@ public class MovieListActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ToastUtil.MyToast(MovieListActivity.this, "您选择了" + mData.get(position).getName());
+                ToastUtil.show(MovieListActivity.this, "您选择了" + mData.get(position).getName());
                 //点击跳转到在线播放视频路径
                 Intent intent = new Intent(MovieListActivity.this,OnlineMovieActivity.class);
                 intent.putExtra("url",mData.get(position).getScore());

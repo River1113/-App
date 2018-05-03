@@ -27,7 +27,6 @@ import butterknife.BindView;
  */
 public class DownLoadActivity extends BaseActivity {
 
-
     @BindView(R.id.tv_title)
     TextView tv_title;
 
@@ -91,7 +90,7 @@ public class DownLoadActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ToastUtil.MyToast(DownLoadActivity.this, "选择播放第" + position + "个");
+                ToastUtil.show(DownLoadActivity.this, "选择播放第" + position + "个");
                 Intent intent=new Intent(DownLoadActivity.this,LocalMovieActivity.class);
                 intent.putExtra("path",mData.get(position).getScore());
                 startActivity(intent);
@@ -116,7 +115,7 @@ public class DownLoadActivity extends BaseActivity {
                 break;
 
             case R.id.tv_right:
-                ToastUtil.MyToast(this, "管理");
+                ToastUtil.show(this, "管理");
                 break;
         }
     }
