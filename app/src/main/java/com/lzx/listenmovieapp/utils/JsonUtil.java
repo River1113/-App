@@ -14,6 +14,7 @@ import java.util.List;
  * @version [版本号, 2015-7-22]
  */
 public class JsonUtil {
+
     /**
      * 转成list
      * 解决泛型问题

@@ -27,6 +27,7 @@ import butterknife.BindView;
  */
 public class MovieListActivity extends BaseActivity {
 
+
     @BindView(R.id.tv_title)
     TextView tv_title;
 

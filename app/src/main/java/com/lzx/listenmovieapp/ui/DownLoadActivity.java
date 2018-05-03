@@ -27,6 +27,7 @@ import butterknife.BindView;
  */
 public class DownLoadActivity extends BaseActivity {
 
+
     @BindView(R.id.tv_title)
     TextView tv_title;
 

@@ -35,12 +35,13 @@ import com.lzx.listenmovieapp.R;
  */
 
 public class OnlineMovieActivity extends AppCompatActivity {
+
    private String url="";
    private Context context;
    private TrackSelection.Factory videoTrackSelectionFactory;
    private Handler mainHandler = new Handler();
    private MediaSource videoSource;
-   private SimpleExoPlayer player;
+   private SimpleExoPlayer player ;
    public void start(View v){
 
    }

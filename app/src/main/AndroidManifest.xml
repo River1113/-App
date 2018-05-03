@@ -47,6 +47,7 @@
         <activity android:name=".ui.MovieListActivity" />
         <activity android:name=".ui.OnlineMovieActivity"/>
         <activity android:name=".ui.LocalMovieActivity"/>
+
     </application>
 
 </manifest>

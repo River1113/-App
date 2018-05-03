@@ -24,6 +24,7 @@ import java.util.TimerTask;
  */
 
 public class LocalMovieActivity extends AppCompatActivity{
+
    private SurfaceView sfv;
    private SeekBar sb;
    private String path ;

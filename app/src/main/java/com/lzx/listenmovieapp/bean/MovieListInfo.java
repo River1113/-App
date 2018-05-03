@@ -12,6 +12,7 @@ public class MovieListInfo implements Serializable{
     private String name;
     private String desc;
     private String score;
+    
 
     public String getImg() {
         return img;
