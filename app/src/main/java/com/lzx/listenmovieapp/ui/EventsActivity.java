@@ -86,7 +86,7 @@ public class EventsActivity extends BaseActivity {
 
     @Override
     protected int setLayoutId() {
-        return R.layout.activity_source;
+        return R.layout.activity_events;
     }
 
     @Override

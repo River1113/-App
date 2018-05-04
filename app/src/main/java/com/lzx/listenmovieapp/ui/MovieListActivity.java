@@ -13,6 +13,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
 import com.kymjs.rxvolley.client.HttpParams;
+import com.kymjs.rxvolley.http.VolleyError;
 import com.kymjs.rxvolley.toolbox.Loger;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.MovieListAdapter;
@@ -84,15 +85,15 @@ public class MovieListActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        getMovieList();
         title = getIntent().getStringExtra("title");
 
         mData = new ArrayList<>();
-        List<MovieListInfo> list = JsonUtil.jsonToList(jsonString, MovieListInfo.class);
-        mData.addAll(list);
+        getMovieList();
+
     }
 
     private void getMovieList() {
+        refreshLayout.setRefreshing(true);
         HttpParams params = new HttpParams();
         params.put("", "");
         RxVolley.get("http://api.m.mtime.cn/PageSubArea/TrailerList.api", params, new HttpCallback() {
@@ -100,6 +101,17 @@ public class MovieListActivity extends BaseActivity {
             public void onSuccess(String result) {
                 super.onSuccess(result);
                 JsonLogUtil.log(result);
+
+                List<MovieListInfo> list = JsonUtil.jsonToList(jsonString, MovieListInfo.class);
+                mData.addAll(list);
+                mAdapter.notifyDataSetChanged();
+                refreshLayout.setRefreshing(false);
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                super.onFailure(error);
+                refreshLayout.setRefreshing(false);
             }
         });
 

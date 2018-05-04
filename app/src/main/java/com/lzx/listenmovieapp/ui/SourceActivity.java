@@ -6,9 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.Volley;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.kymjs.rxvolley.rx.RxBus;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.HomeAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
