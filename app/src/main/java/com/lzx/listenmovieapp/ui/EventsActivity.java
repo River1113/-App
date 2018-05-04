@@ -1,5 +1,4 @@
 package com.lzx.listenmovieapp.ui;
-
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -49,15 +48,33 @@ public class EventsActivity extends BaseActivity {
     private BaseQuickAdapter mAdapter;
 
     String jsonString = "[{\n" +
-            "\t\"eventId\": 1,\n" +
-            "\t\"eventName\": \"游玩\",\n" +
-            "\t\"coverImage\": \"https://www.baidu.com/img/bd_logo1.png?where=super\",\n" +
-            "\t\"status\": 3,\n" +
-            "\t\"startTime\": \"2018/5/2\",\n" +
-            "\t\"endTime\": \"2018/5/4\",\n" +
-            "\t\"address\": \"济南\",\n" +
-            "\t\"description\": \"玩的很有意义\"\n" +
-            "}]";
+       "\t\"eventId\": 1,\n" +
+       "\t\"eventName\": \"游玩\",\n" +
+       "\t\"coverImage\": \"http://game.gtimg.cn/images/lol/act/a20180319resistillaoi/image.jpg\",\n" +
+       "\t\"status\": 3,\n" +
+       "\t\"startTime\": \"2018/5/2\",\n" +
+       "\t\"endTime\": \"2018/5/4\",\n" +
+       "\t\"address\": \"济南\",\n" +
+       "\t\"description\": \"玩的很有意义\"\n" +
+       "},{\n" +
+       "\t\"eventId\": 2,\n" +
+       "\t\"eventName\": \"游玩\",\n" +
+       "\t\"coverImage\": \"http://game.gtimg.cn/images/lol/act/a20180403monkeyking/image.jpg\",\n" +
+       "\t\"status\": 2,\n" +
+       "\t\"startTime\": \"2018/5/2\",\n" +
+       "\t\"endTime\": \"2018/5/4\",\n" +
+       "\t\"address\": \"济南\",\n" +
+       "\t\"description\": \"玩的很有意义\"\n" +
+       "},{\n" +
+       "\t\"eventId\": 3,\n" +
+       "\t\"eventName\": \"游玩\",\n" +
+       "\t\"coverImage\": \"http://game.gtimg.cn/images/lol/act/a20180227jarvan/dsjarvan-top.jpg\",\n" +
+       "\t\"status\": 1,\n" +
+       "\t\"startTime\": \"2018/5/2\",\n" +
+       "\t\"endTime\": \"2018/5/4\",\n" +
+       "\t\"address\": \"济南\",\n" +
+       "\t\"description\": \"玩的很有意义\"\n" +
+       "}]";
 
     @Override
     protected void initImmersionBar() {
