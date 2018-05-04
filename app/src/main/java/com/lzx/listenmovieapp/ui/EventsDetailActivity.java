@@ -81,7 +81,9 @@ public class EventsDetailActivity extends BaseActivity {
 
     private void setDetailUI() {
         //设置封面图
-        Glide.with(this).load(eventBean.getCoverImage()).placeholder(R.mipmap.image_placeholder).into(iv_coverImage);
+        Glide.with(this)
+                .load(eventBean.getCoverImage())
+                .placeholder(R.mipmap.image_placeholder).into(iv_coverImage);
         int status = eventBean.getStatus();
         //活动状态 (0.default,1.未开始,2.进行中，3.已结束)
         switch (status) {

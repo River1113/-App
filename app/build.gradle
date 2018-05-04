@@ -37,7 +37,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
     //gradle 轮播图
     compile('com.alibaba.android:ultraviewpager:1.0.7.6@aar') {
         transitive = true
@@ -46,6 +45,8 @@ dependencies {
 
     // 状态栏适配
     compile 'com.gyf.barlibrary:barlibrary:2.3.0'
+
+    //RecyclerViewAdapter框架
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
 
     //注解
@@ -58,9 +59,9 @@ dependencies {
     //GSON解析
     compile 'com.google.code.gson:gson:2.8.2'
 
-    //volley网络 SuperLi
-    compile 'com.mcxiaoke.volley:library:1.0.19'
-
     //添加 ExoPlayer google 依赖  SuperLi
     implementation 'com.google.android.exoplayer:exoplayer:r2.3.0'
+
+    // 网络加载
+    compile 'com.kymjs.rxvolley:rxvolley:1.1.4'
 }
