@@ -42,6 +42,7 @@
         <activity android:name=".ui.RemotePlayedActivity" />
         <activity android:name=".ui.DubbingActivity" />
         <activity android:name=".ui.EventsActivity" />
+        <activity android:name=".ui.EventsDetailActivity" />
         <activity android:name=".ui.SetActivity" />
         <activity android:name=".ui.MyActivity" />
         <activity android:name=".ui.MovieListActivity" />

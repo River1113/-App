@@ -78,17 +78,20 @@ public class MovieListActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        title = getIntent().getStringExtra("title");
+
+        mData = new ArrayList<>();
         List<MovieListInfo> list = JsonUtil.jsonToList(jsonString, MovieListInfo.class);
         Log.e("---","" + list.size());
         System.out.println("总条数"+list.size());
-        title = getIntent().getStringExtra("title");
+        mData.addAll(list);
     }
 
     @Override
     protected void initView() {
         tv_title.setText(title);
-        initRecyclerView();
         refreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        initRecyclerView();
     }
 
     private void initRecyclerView() {
@@ -117,8 +120,9 @@ public class MovieListActivity extends BaseActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (refreshLayout != null)
+                        if (refreshLayout != null){
                             refreshLayout.setRefreshing(false);
+                        }
                     }
                 }, 2000);
             }
