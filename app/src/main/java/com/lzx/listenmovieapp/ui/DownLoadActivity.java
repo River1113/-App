@@ -1,4 +1,5 @@
 package com.lzx.listenmovieapp.ui;
+
 import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.widget.GridLayoutManager;
@@ -6,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.MovieDownLoadListAdapter;
@@ -57,19 +59,19 @@ public class DownLoadActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        String path= Environment.getExternalStorageDirectory()+"/mnt/sdcard/";
-        File file=new File(path);
-        if(!file.exists()){
+        String path = Environment.getExternalStorageDirectory() + "/mnt/sdcard/";
+        File file = new File(path);
+        if (!file.exists()) {
             file.mkdir();
         }
-        File[] listfiles=file.listFiles();
+        File[] listfiles = file.listFiles();
         mData = new ArrayList<>();
         for (int i = 0; i < listfiles.length; i++) {
             MovieDownloadListInfo info = new MovieDownloadListInfo();
             info.setImg("https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1709857625,355767256&fm=179&w=115&h=161&img.JPEG");
             info.setName(listfiles[i].getName());
             info.setDesc("已下载");
-            info.setScore(path+listfiles[i].getName());
+            info.setScore(path + listfiles[i].getName());
             mData.add(info);
         }
     }
@@ -91,8 +93,8 @@ public class DownLoadActivity extends BaseActivity {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 ToastUtil.show(DownLoadActivity.this, "选择播放第" + position + "个");
-                Intent intent=new Intent(DownLoadActivity.this,LocalMovieActivity.class);
-                intent.putExtra("path",mData.get(position).getScore());
+                Intent intent = new Intent(DownLoadActivity.this, LocalMovieActivity.class);
+                intent.putExtra("path", mData.get(position).getScore());
                 startActivity(intent);
             }
         });
