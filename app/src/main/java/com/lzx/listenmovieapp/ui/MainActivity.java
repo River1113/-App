@@ -1,5 +1,4 @@
 package com.lzx.listenmovieapp.ui;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

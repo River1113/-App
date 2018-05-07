@@ -10,12 +10,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.kymjs.rxvolley.RxVolley;
+import com.kymjs.rxvolley.client.HttpCallback;
+import com.kymjs.rxvolley.client.HttpParams;
+import com.kymjs.rxvolley.http.VolleyError;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.EventsAdapter;
 import com.lzx.listenmovieapp.adapter.MovieListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.EventBean;
 import com.lzx.listenmovieapp.bean.MovieListInfo;
+import com.lzx.listenmovieapp.utils.JsonLogUtil;
 import com.lzx.listenmovieapp.utils.JsonUtil;
 import com.lzx.listenmovieapp.utils.ToastUtil;
 
@@ -47,34 +52,6 @@ public class EventsActivity extends BaseActivity {
     private List<EventBean> mData;
     private BaseQuickAdapter mAdapter;
 
-    String jsonString = "[{\n" +
-       "\t\"eventId\": 1,\n" +
-       "\t\"eventName\": \"游玩\",\n" +
-       "\t\"coverImage\": \"http://game.gtimg.cn/images/lol/act/a20180319resistillaoi/image.jpg\",\n" +
-       "\t\"status\": 3,\n" +
-       "\t\"startTime\": \"2018/5/2\",\n" +
-       "\t\"endTime\": \"2018/5/4\",\n" +
-       "\t\"address\": \"济南\",\n" +
-       "\t\"description\": \"玩的很有意义\"\n" +
-       "},{\n" +
-       "\t\"eventId\": 2,\n" +
-       "\t\"eventName\": \"游玩\",\n" +
-       "\t\"coverImage\": \"http://game.gtimg.cn/images/lol/act/a20180403monkeyking/image.jpg\",\n" +
-       "\t\"status\": 2,\n" +
-       "\t\"startTime\": \"2018/5/2\",\n" +
-       "\t\"endTime\": \"2018/5/4\",\n" +
-       "\t\"address\": \"济南\",\n" +
-       "\t\"description\": \"玩的很有意义\"\n" +
-       "},{\n" +
-       "\t\"eventId\": 3,\n" +
-       "\t\"eventName\": \"游玩\",\n" +
-       "\t\"coverImage\": \"http://game.gtimg.cn/images/lol/act/a20180227jarvan/dsjarvan-top.jpg\",\n" +
-       "\t\"status\": 1,\n" +
-       "\t\"startTime\": \"2018/5/2\",\n" +
-       "\t\"endTime\": \"2018/5/4\",\n" +
-       "\t\"address\": \"济南\",\n" +
-       "\t\"description\": \"玩的很有意义\"\n" +
-       "}]";
 
     @Override
     protected void initImmersionBar() {
@@ -92,9 +69,34 @@ public class EventsActivity extends BaseActivity {
     @Override
     protected void initData() {
         mData = new ArrayList<>();
-        List<EventBean> list = JsonUtil.jsonToList(jsonString, EventBean.class);
-        mData.addAll(list);
+        getEventList();
     }
+
+    private void getEventList() {
+        refreshLayout.setRefreshing(true);
+        HttpParams params = new HttpParams();
+        //params.put("movieType", "movieType");//http://api.m.mtime.cn/PageSubArea/TrailerList.api
+        RxVolley.get("http://192.168.0.107:8080/activity.json", params, new HttpCallback() {
+            @Override
+            public void onSuccess(String result) {
+                super.onSuccess(result);
+                JsonLogUtil.log(result);
+
+                List<EventBean> list = JsonUtil.jsonToList(result, EventBean.class);
+                mData.addAll(list);
+                mAdapter.notifyDataSetChanged();
+                refreshLayout.setRefreshing(false);
+            }
+
+            @Override
+            public void onFailure(VolleyError error) {
+                super.onFailure(error);
+                refreshLayout.setRefreshing(false);
+            }
+        });
+
+    }
+
 
     @Override
     protected void initView() {
