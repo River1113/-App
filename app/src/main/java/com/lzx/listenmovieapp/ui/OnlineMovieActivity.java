@@ -77,7 +77,6 @@ public class OnlineMovieActivity extends AppCompatActivity {
       //url="http://hls.videocc.net/ce0812b122/c/ce0812b122c492470605bc47d3388a09_3.m3u8";
       url=getIntent().getStringExtra("url");
       //url="http://hls.videocc.net/ce0812b122/c/ce0812b122c492470605bc47d3388a09_3.m3u8";
-      Toast.makeText(this,url,Toast.LENGTH_LONG).show();
       if(url.contains(".m3u8")){
          videoSource =new HlsMediaSource(Uri.parse(url),dataSourceFactory,null,null);
       }else{

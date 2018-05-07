@@ -77,7 +77,7 @@ public class MovieListActivity extends BaseActivity {
         refreshLayout.setRefreshing(true);
         HttpParams params = new HttpParams();
         //params.put("movieType", "movieType");//http://api.m.mtime.cn/PageSubArea/TrailerList.api
-        RxVolley.get("http://192.168.0.107:8080/movies.json", params, new HttpCallback() {
+        RxVolley.get(Config.MOVIE_LIST_URL, params, new HttpCallback() {
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);
@@ -111,7 +111,6 @@ public class MovieListActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ToastUtil.show(MovieListActivity.this, "您选择了" + mData.get(position).getName());
                 //点击跳转到在线播放视频路径
                 Intent intent = new Intent(MovieListActivity.this, OnlineMovieActivity.class);
                 intent.putExtra("url", mData.get(position).getUrl());

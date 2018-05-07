@@ -1,4 +1,5 @@
 package com.lzx.listenmovieapp.ui;
+
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -20,6 +21,7 @@ import com.lzx.listenmovieapp.adapter.MovieListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.EventBean;
 import com.lzx.listenmovieapp.bean.MovieListInfo;
+import com.lzx.listenmovieapp.http.Config;
 import com.lzx.listenmovieapp.utils.JsonLogUtil;
 import com.lzx.listenmovieapp.utils.JsonUtil;
 import com.lzx.listenmovieapp.utils.ToastUtil;
@@ -76,7 +78,7 @@ public class EventsActivity extends BaseActivity {
         refreshLayout.setRefreshing(true);
         HttpParams params = new HttpParams();
         //params.put("movieType", "movieType");//http://api.m.mtime.cn/PageSubArea/TrailerList.api
-        RxVolley.get("http://192.168.0.107:8080/activity.json", params, new HttpCallback() {
+        RxVolley.get(Config.EVENTS_URL, params, new HttpCallback() {
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);

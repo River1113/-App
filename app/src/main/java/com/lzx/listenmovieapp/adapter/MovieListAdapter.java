@@ -9,6 +9,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.bean.HomeItem;
 import com.lzx.listenmovieapp.bean.MovieListInfo;
+import com.lzx.listenmovieapp.http.Config;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class MovieListAdapter extends BaseQuickAdapter<MovieListInfo, BaseViewHo
     @Override
     protected void convert(BaseViewHolder helper, MovieListInfo item) {
         ImageView imageView = helper.getView(R.id.iv_item);
-        Glide.with(mContext).load(item.getImg())
+        Glide.with(mContext).load(Config.RESOURCE_URL + item.getImg())
                 .centerCrop()
                 .placeholder(R.mipmap.image_placeholder)
                 .into(imageView);
