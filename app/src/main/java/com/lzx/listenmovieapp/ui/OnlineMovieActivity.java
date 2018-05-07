@@ -28,6 +28,7 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.lzx.listenmovieapp.R;
+import com.lzx.listenmovieapp.http.Config;
 
 /**
  * 作者：SuperLi on 2018/5/2 08:53
@@ -36,63 +37,65 @@ import com.lzx.listenmovieapp.R;
 
 public class OnlineMovieActivity extends AppCompatActivity {
 
-   private String url="";
-   private Context context;
-   private TrackSelection.Factory videoTrackSelectionFactory;
-   private Handler mainHandler = new Handler();
-   private MediaSource videoSource;
-   private SimpleExoPlayer player ;
-   public void start(View v){
+    private String url = "";
+    private Context context;
+    private TrackSelection.Factory videoTrackSelectionFactory;
+    private Handler mainHandler = new Handler();
+    private MediaSource videoSource;
+    private SimpleExoPlayer player;
 
-   }
-   @Override
-   protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      context=OnlineMovieActivity.this;
+    public void start(View v) {
 
-      setContentView(R.layout.layout_onlinemovie);
-      // 1.创建一个默认TrackSelector
-      BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-      TrackSelection.Factory videoTrackSelectionFactory =
-         new AdaptiveTrackSelection.Factory(bandwidthMeter);
-      TrackSelector trackSelector =
-         new DefaultTrackSelector(videoTrackSelectionFactory);
-      // 2.创建一个默认的LoadControl
-      LoadControl loadControl = new DefaultLoadControl();
+    }
 
-      // 3.创建播放器
-      player = ExoPlayerFactory.newSimpleInstance(context,trackSelector,loadControl);
-      SimpleExoPlayerView simpleExoPlayerView= (SimpleExoPlayerView) findViewById(R.id.simpleExoPlayerView);
-      // 将player关联到View上
-      simpleExoPlayerView.setPlayer(player);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context = OnlineMovieActivity.this;
+
+        setContentView(R.layout.layout_onlinemovie);
+        // 1.创建一个默认TrackSelector
+        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
+        TrackSelection.Factory videoTrackSelectionFactory =
+                new AdaptiveTrackSelection.Factory(bandwidthMeter);
+        TrackSelector trackSelector =
+                new DefaultTrackSelector(videoTrackSelectionFactory);
+        // 2.创建一个默认的LoadControl
+        LoadControl loadControl = new DefaultLoadControl();
+
+        // 3.创建播放器
+        player = ExoPlayerFactory.newSimpleInstance(context, trackSelector, loadControl);
+        SimpleExoPlayerView simpleExoPlayerView = findViewById(R.id.simpleExoPlayerView);
+        // 将player关联到View上
+        simpleExoPlayerView.setPlayer(player);
 
 
-      DefaultBandwidthMeter bandwidthMeter2 = new DefaultBandwidthMeter();
+        DefaultBandwidthMeter bandwidthMeter2 = new DefaultBandwidthMeter();
 // Produces DataSource instances through which media data is loaded.
-      DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(context,
-         Util.getUserAgent(context, "yourApplicationName"), bandwidthMeter2);
-      ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-      //url="http://mpv.videocc.net/ce0812b122/a/ce0812b122bf0fb49d79ebd97cbe98fa_1.mp4";
-      // test hls
-      //url="http://hls.videocc.net/ce0812b122/c/ce0812b122c492470605bc47d3388a09_3.m3u8";
-      url=getIntent().getStringExtra("url");
-      //url="http://hls.videocc.net/ce0812b122/c/ce0812b122c492470605bc47d3388a09_3.m3u8";
-      if(url.contains(".m3u8")){
-         videoSource =new HlsMediaSource(Uri.parse(url),dataSourceFactory,null,null);
-      }else{
-         //test mp4
-         videoSource = new ExtractorMediaSource(Uri.parse(url),
-            dataSourceFactory, extractorsFactory, null, null);
-      }
+        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(context,
+                Util.getUserAgent(context, "yourApplicationName"), bandwidthMeter2);
+        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+        //url="http://mpv.videocc.net/ce0812b122/a/ce0812b122bf0fb49d79ebd97cbe98fa_1.mp4";
+        // test hls
+        //url="http://hls.videocc.net/ce0812b122/c/ce0812b122c492470605bc47d3388a09_3.m3u8";
+        url = Config.RESOURCE_URL + getIntent().getStringExtra("url");
+        //url="http://hls.videocc.net/ce0812b122/c/ce0812b122c492470605bc47d3388a09_3.m3u8";
+        if (url.contains(".m3u8")) {
+            videoSource = new HlsMediaSource(Uri.parse(url), dataSourceFactory, null, null);
+        } else {
+            //test mp4
+            videoSource = new ExtractorMediaSource(Uri.parse(url),
+                    dataSourceFactory, extractorsFactory, null, null);
+        }
 
-      player.prepare(videoSource);
+        player.prepare(videoSource);
 // Prepare the player with the source.
 
-   }
+    }
 
-   @Override
-   protected void onDestroy() {
-      super.onDestroy();
-      player.release();
-   }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        player.release();
+    }
 }
