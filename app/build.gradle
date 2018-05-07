@@ -69,4 +69,7 @@ dependencies {
 
     // 网络加载
     compile 'com.kymjs.rxvolley:rxvolley:1.1.4'
+
+    // 权限申请
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 }
