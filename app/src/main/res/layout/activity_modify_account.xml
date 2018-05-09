@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgMainColor"
+    android:orientation="vertical">
+
+    <include layout="@layout/index_title" />
+
+
+    <View
+        style="@style/dividerStyle"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:id="@+id/et_account"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:hint="请输入账号昵称"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="用户1024"
+        android:textColor="@color/txtMainColor"
+        android:textSize="15sp" />
+
+    <View style="@style/dividerStyle" />
+</LinearLayout>

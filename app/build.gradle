@@ -7,7 +7,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -16,12 +16,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets{
-        main{
-            jniLibs.srcDirs=['libs']
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
     buildToolsVersion '27.0.3'
+
+    //开启Java1.8 能够使用lambda表达式
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 //configurations.all {
@@ -72,4 +78,5 @@ dependencies {
 
     // 权限申请
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+
 }

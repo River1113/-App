@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View style="@style/dividerStyle" />
+
+    <TextView
+        android:id="@+id/tv_recommend"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="推荐给朋友"
+        android:textColor="@color/txtMainColor"
+        android:textSize="15sp" />
+
+    <View style="@style/dividerStyle" />
+
+    <TextView
+        android:id="@+id/tv_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="帮助与反馈"
+        android:textColor="@color/txtMainColor"
+        android:textSize="15sp" />
+
+    <View style="@style/dividerStyle" />
+</LinearLayout>

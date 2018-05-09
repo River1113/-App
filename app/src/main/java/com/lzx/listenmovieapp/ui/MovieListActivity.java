@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,15 +13,13 @@ import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
 import com.kymjs.rxvolley.client.HttpParams;
 import com.kymjs.rxvolley.http.VolleyError;
-import com.kymjs.rxvolley.toolbox.Loger;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.MovieListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.MovieListInfo;
 import com.lzx.listenmovieapp.http.Config;
-import com.lzx.listenmovieapp.utils.JsonLogUtil;
-import com.lzx.listenmovieapp.utils.JsonUtil;
-import com.lzx.listenmovieapp.utils.ToastUtil;
+import com.lzx.listenmovieapp.util.JsonLogUtil;
+import com.lzx.listenmovieapp.util.JsonUtil;
 
 import java.util.ArrayList;
 import java.util.List;

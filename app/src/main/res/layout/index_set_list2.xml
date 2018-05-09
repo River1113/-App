@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View style="@style/dividerStyle" />
+
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="关于听影"
+        android:textColor="@color/txtMainColor"
+        android:textSize="15sp" />
+
+
+    <View style="@style/dividerStyle" />
+
+    <RelativeLayout
+        android:id="@+id/rl_update"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="软件更新"
+            android:textColor="@color/txtMainColor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="v1.0.0"
+            android:textColor="@color/txtGrayColor"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <View style="@style/dividerStyle" />
+</LinearLayout>

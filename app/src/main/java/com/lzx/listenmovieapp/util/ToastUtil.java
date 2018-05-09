@@ -1,4 +1,4 @@
-package com.lzx.listenmovieapp.utils;
+package com.lzx.listenmovieapp.util;
 
 /**
  * Author：Road
@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class ToastUtil {
 
     public static void show(Context context, String message) {
-        show(context, message, Toast.LENGTH_SHORT);
+        show(context, message, Toast.LENGTH_LONG);
     }
     private static Toast mToast;
     private static Handler mHandler = new Handler();

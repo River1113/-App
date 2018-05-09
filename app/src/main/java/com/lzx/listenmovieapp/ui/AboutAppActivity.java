@@ -1,34 +1,25 @@
 package com.lzx.listenmovieapp.ui;
 
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.base.BaseActivity;
-import com.lzx.listenmovieapp.util.ToastUtil;
 
 import butterknife.BindView;
 
 /**
- * 远程点播
+ * 关于听影app
  *
  * @author cx
  */
-public class RemotePlayedActivity extends BaseActivity {
+public class AboutAppActivity extends BaseActivity {
 
     @BindView(R.id.tv_title)
     TextView tv_title;
 
     @BindView(R.id.tv_back)
     TextView tv_back;
-
-    @BindView(R.id.iv_voice)
-    ImageView iv_voice;
-
-    @BindView(R.id.btn_send)
-    Button btn_send;
 
     @Override
     protected void initImmersionBar() {
@@ -40,7 +31,7 @@ public class RemotePlayedActivity extends BaseActivity {
 
     @Override
     protected int setLayoutId() {
-        return R.layout.activity_remote_player;
+        return R.layout.activity_about_app;
     }
 
     @Override
@@ -50,14 +41,12 @@ public class RemotePlayedActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        tv_title.setText("远程点播");
+        tv_title.setText("关于听影");
     }
 
     @Override
     protected void setListener() {
         tv_back.setOnClickListener(this);
-        btn_send.setOnClickListener(this);
-        iv_voice.setOnClickListener(this);
     }
 
     @Override
@@ -68,14 +57,6 @@ public class RemotePlayedActivity extends BaseActivity {
 
             case R.id.tv_back:
                 finish();
-                break;
-
-            case R.id.btn_send:
-                ToastUtil.show(this, "发送");
-                break;
-
-            case R.id.iv_voice:
-                ToastUtil.show(this, "开始语音");
                 break;
         }
     }

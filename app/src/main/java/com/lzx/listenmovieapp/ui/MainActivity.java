@@ -29,7 +29,7 @@ import com.lzx.listenmovieapp.adapter.HomeAdapter;
 import com.lzx.listenmovieapp.adapter.HomePagerAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.HomeItem;
-import com.lzx.listenmovieapp.utils.ToastUtil;
+import com.lzx.listenmovieapp.util.ToastUtil;
 import com.tmall.ultraviewpager.UltraViewPager;
 
 import org.json.JSONArray;

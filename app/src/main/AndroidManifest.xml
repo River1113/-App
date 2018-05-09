@@ -46,9 +46,12 @@
         <activity android:name=".ui.SetActivity" />
         <activity android:name=".ui.MyActivity" />
         <activity android:name=".ui.MovieListActivity" />
-        <activity android:name=".ui.OnlineMovieActivity"/>
-        <activity android:name=".ui.LocalMovieActivity"/>
-
+        <activity android:name=".ui.OnlineMovieActivity" />
+        <activity android:name=".ui.LocalMovieActivity" />
+        <activity android:name=".ui.ModifyAccountActivity" />
+        <activity android:name=".ui.AboutAppActivity" />
+        <activity android:name=".ui.RecommendActivity" />
+        <activity android:name=".ui.FeedBackActivity" />
     </application>
 
 </manifest>

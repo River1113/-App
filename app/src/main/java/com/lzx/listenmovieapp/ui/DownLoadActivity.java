@@ -2,7 +2,6 @@ package com.lzx.listenmovieapp.ui;
 
 import android.content.Intent;
 import android.os.Environment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,10 +10,9 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.MovieDownLoadListAdapter;
-import com.lzx.listenmovieapp.adapter.MovieListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.MovieDownloadListInfo;
-import com.lzx.listenmovieapp.utils.ToastUtil;
+import com.lzx.listenmovieapp.util.ToastUtil;
 
 import java.io.File;
 import java.util.ArrayList;

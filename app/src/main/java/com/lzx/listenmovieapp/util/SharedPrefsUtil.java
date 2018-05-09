@@ -1,4 +1,4 @@
-package com.lzx.listenmovieapp.utils;
+package com.lzx.listenmovieapp.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,7 +8,8 @@ import android.content.SharedPreferences;
  *
  * @author: road
  */
-public class SharedPreferencesUtils {
+public class SharedPrefsUtil {
+    private static final String SHAREDPREFS_FILE_NAME = "listen_movie";
     private static SharedPreferences sp;
 
     /**
@@ -20,7 +21,7 @@ public class SharedPreferencesUtils {
      */
     public static void saveBoolean(Context context, String key, boolean value) {
         if (sp == null) {
-            sp = context.getSharedPreferences("MeiTian", context.MODE_PRIVATE);
+            sp = context.getSharedPreferences(SHAREDPREFS_FILE_NAME, context.MODE_PRIVATE);
         }
         sp.edit().putBoolean(key, value).commit();
     }
@@ -36,7 +37,7 @@ public class SharedPreferencesUtils {
     public static boolean getBoolean(Context context, String key,
                                      boolean defboolean) {
         if (sp == null) {
-            sp = context.getSharedPreferences("MeiTian", context.MODE_PRIVATE);
+            sp = context.getSharedPreferences(SHAREDPREFS_FILE_NAME, context.MODE_PRIVATE);
         }
         return sp.getBoolean(key, defboolean);
     }
@@ -50,7 +51,7 @@ public class SharedPreferencesUtils {
      */
     public static void saveString(Context context, String key, String value) {
         if (sp == null) {
-            sp = context.getSharedPreferences("MeiTian", context.MODE_PRIVATE);
+            sp = context.getSharedPreferences(SHAREDPREFS_FILE_NAME, context.MODE_PRIVATE);
         }
         sp.edit().putString(key, value).commit();
     }
@@ -65,7 +66,7 @@ public class SharedPreferencesUtils {
      */
     public static String getString(Context context, String key, String defstring) {
         if (sp == null) {
-            sp = context.getSharedPreferences("MeiTian", context.MODE_PRIVATE);
+            sp = context.getSharedPreferences(SHAREDPREFS_FILE_NAME, context.MODE_PRIVATE);
         }
         return sp.getString(key, defstring);
     }
@@ -79,7 +80,7 @@ public class SharedPreferencesUtils {
      */
     public static void saveInt(Context context, String key, int value) {
         if (sp == null) {
-            sp = context.getSharedPreferences("MeiTian", context.MODE_PRIVATE);
+            sp = context.getSharedPreferences(SHAREDPREFS_FILE_NAME, context.MODE_PRIVATE);
         }
         sp.edit().putInt(key, value).commit();
     }
@@ -94,7 +95,7 @@ public class SharedPreferencesUtils {
      */
     public static int getInt(Context context, String key, int defInt) {
         if (sp == null) {
-            sp = context.getSharedPreferences("MeiTian", context.MODE_PRIVATE);
+            sp = context.getSharedPreferences(SHAREDPREFS_FILE_NAME, context.MODE_PRIVATE);
         }
         return sp.getInt(key, defInt);
     }
@@ -108,7 +109,7 @@ public class SharedPreferencesUtils {
      */
     public static void saveLong(Context context, String key, long value) {
         if (sp == null) {
-            sp = context.getSharedPreferences("MeiTian", context.MODE_PRIVATE);
+            sp = context.getSharedPreferences(SHAREDPREFS_FILE_NAME, context.MODE_PRIVATE);
         }
         sp.edit().putLong(key, value).commit();
     }
@@ -123,7 +124,7 @@ public class SharedPreferencesUtils {
      */
     public static long getLong(Context context, String key, long defInt) {
         if (sp == null) {
-            sp = context.getSharedPreferences("MeiTian", context.MODE_PRIVATE);
+            sp = context.getSharedPreferences(SHAREDPREFS_FILE_NAME, context.MODE_PRIVATE);
         }
         return sp.getLong(key, defInt);
     }
@@ -135,7 +136,7 @@ public class SharedPreferencesUtils {
      */
     public static void removeSP(Context context, String key) {
         if (sp == null) {
-            sp = context.getSharedPreferences("MeiTian", context.MODE_PRIVATE);
+            sp = context.getSharedPreferences(SHAREDPREFS_FILE_NAME, context.MODE_PRIVATE);
         }
         sp.edit().remove(key).commit();
     }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgMainColor"
+    android:orientation="vertical">
+
+    <include layout="@layout/index_title" />
+
+    <View
+        style="@style/dividerStyle"
+        android:layout_marginTop="20dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_account"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="听影账号"
+            android:textColor="@color/txtMainColor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="用户1024"
+            android:textColor="@color/txtGrayColor"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <View style="@style/dividerStyle" />
+
+    <RelativeLayout
+        android:id="@+id/rl_vipPlate"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="vip板块"
+            android:textColor="@color/txtMainColor"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/switch_wifi"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_vip" />
+    </RelativeLayout>
+
+    <View style="@style/dividerStyle" />
+
+    <View
+        style="@style/dividerStyle"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/tv_authorization"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="账号认证"
+        android:textColor="@color/txtMainColor"
+        android:textSize="15sp" />
+
+    <View style="@style/dividerStyle" />
+</LinearLayout>

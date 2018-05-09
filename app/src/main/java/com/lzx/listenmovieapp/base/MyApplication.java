@@ -14,6 +14,7 @@ import com.lzx.listenmovieapp.R;
 
 public class MyApplication extends Application {
     private SpeechSynthesizer speaker;
+
     @Override
     public void onCreate() {
         // 应用程序入口处调用，避免手机内存过小，杀死后台进程后通过历史intent进入Activity造成SpeechUtility对象为null
@@ -32,13 +33,14 @@ public class MyApplication extends Application {
         // 请勿在“=”与appid之间添加任何空字符或者转义符
         //SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5ac89264");
         //初始化 SDK
-        speaker = SpeechSynthesizer.createSynthesizer(MyApplication.this, null);//创建语音合成对象
-        speaker.setParameter(SpeechConstant.VOICE_NAME,"xiaoyan");
+        //创建语音合成对象
+        speaker = SpeechSynthesizer.createSynthesizer(MyApplication.this, null);
+        speaker.setParameter(SpeechConstant.VOICE_NAME, "xiaoyan");
         //初始化语音合成相关设置
-        speaker.setParameter(SpeechConstant.SPEED,"50");
-        speaker.setParameter(SpeechConstant.PITCH,"50");
-        speaker.setParameter(SpeechConstant.VOLUME,"50");
-        speaker.setParameter(SpeechConstant.STREAM_TYPE,"3");
+        speaker.setParameter(SpeechConstant.SPEED, "50");
+        speaker.setParameter(SpeechConstant.PITCH, "50");
+        speaker.setParameter(SpeechConstant.VOLUME, "50");
+        speaker.setParameter(SpeechConstant.STREAM_TYPE, "3");
         speaker.setParameter(SpeechConstant.KEY_REQUEST_FOCUS, "true");
         speaker.startSpeaking("您好，欢迎进入听影，我们将给您带来以下服务:影库资源请说1,下载专区请说2,重复请说0", null);
         super.onCreate();

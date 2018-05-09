@@ -1,4 +1,4 @@
-package com.lzx.listenmovieapp.utils;
+package com.lzx.listenmovieapp.util;
 
 import android.util.Log;
 
