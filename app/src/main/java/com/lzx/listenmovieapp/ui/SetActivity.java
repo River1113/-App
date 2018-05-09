@@ -96,11 +96,7 @@ public class SetActivity extends BaseActivity {
         tv_feedback.setOnClickListener(this);
 
         switch_wifi.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-
-            } else {
-
-            }
+            SharedPrefsUtil.saveBoolean(this, "isOnlyWifi", isChecked);
         });
     }
 
@@ -126,7 +122,7 @@ public class SetActivity extends BaseActivity {
                 break;
 
             case R.id.tv_about:
-               startActivity(new Intent(this,AboutAppActivity.class));
+                startActivity(new Intent(this, AboutAppActivity.class));
                 break;
 
             case R.id.rl_update:
@@ -134,11 +130,11 @@ public class SetActivity extends BaseActivity {
                 break;
 
             case R.id.tv_recommend:
-                startActivity(new Intent(this,RecommendActivity.class));
+                startActivity(new Intent(this, RecommendActivity.class));
                 break;
 
             case R.id.tv_feedback:
-                startActivity(new Intent(this,FeedBackActivity.class));
+                startActivity(new Intent(this, FeedBackActivity.class));
                 break;
         }
     }
