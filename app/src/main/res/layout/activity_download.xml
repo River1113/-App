@@ -3,14 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bgMainColor"
     android:orientation="vertical"
     tools:context="com.lzx.listenmovieapp.ui.DownLoadActivity">
 
     <include layout="@layout/index_title" />
 
+    <LinearLayout
+        android:id="@+id/ll_localMovies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View style="@style/dividerStyle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:text="已缓存视频" />
+
+        <View style="@style/dividerStyle" />
+    </LinearLayout>
+
+
     <android.support.v7.widget.RecyclerView
+        android:overScrollMode="never"
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

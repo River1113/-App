@@ -37,6 +37,7 @@
         </activity>
         <activity android:name=".ui.SourceActivity" />
         <activity android:name=".ui.DownLoadActivity" />
+        <activity android:name=".ui.LocalMoviesActivity" />
         <activity android:name=".ui.RecentlyPlayedActivity" />
         <activity android:name=".ui.CollectActivity" />
         <activity android:name=".ui.RemotePlayedActivity" />
@@ -47,7 +48,7 @@
         <activity android:name=".ui.MyActivity" />
         <activity android:name=".ui.MovieListActivity" />
         <activity android:name=".ui.OnlineMovieActivity" />
-        <activity android:name=".ui.LocalMovieActivity" />
+        <activity android:name=".ui.LocalMoviePlayActivity" />
         <activity android:name=".ui.ModifyAccountActivity" />
         <activity android:name=".ui.AboutAppActivity" />
         <activity android:name=".ui.RecommendActivity" />
