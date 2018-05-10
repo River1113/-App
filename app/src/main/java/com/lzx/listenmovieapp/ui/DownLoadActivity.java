@@ -68,7 +68,6 @@ public class DownLoadActivity extends BaseActivity {
     protected void initView() {
         tv_title.setText("下载电影");
         tv_right.setText("管理");
-        tv_right.setVisibility(View.VISIBLE);
 
         initRecyclerView();
     }
@@ -77,7 +76,7 @@ public class DownLoadActivity extends BaseActivity {
         rv_list.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new MovieDownLoadListAdapter(R.layout.item_download_list, mData);
         mAdapter.setOnItemClickListener((BaseQuickAdapter adapter, View view, int position) -> {
-           
+
         });
         rv_list.setAdapter(mAdapter);
     }

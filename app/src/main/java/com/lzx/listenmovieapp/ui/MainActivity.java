@@ -1,4 +1,5 @@
 package com.lzx.listenmovieapp.ui;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -194,7 +195,7 @@ public class MainActivity extends BaseActivity {
                 SpeechUtility.createUtility(MainActivity.this, SpeechConstant.APPID + "=5ac89264");
 
                 // 1.创建SpeechRecognizer对象，第2个参数：本地听写时传InitListener
-                hearer = SpeechRecognizer.createRecognizer( MainActivity.this, null);
+                hearer = SpeechRecognizer.createRecognizer(MainActivity.this, null);
                 // 交互动画
                 dialog = new RecognizerDialog(MainActivity.this, null);
                 // 2.设置听写参数，详见《科大讯飞MSC API手册(Android)》SpeechConstant类
@@ -213,8 +214,8 @@ public class MainActivity extends BaseActivity {
                         StringBuffer strBuffer = new StringBuffer();
                         try {
                             JSONTokener tokener = new JSONTokener(results.getResultString());
-                            Log.i("TAG", "Test"+results.getResultString());
-                            Log.i("TAG", "Test"+results.toString());
+                            Log.i("TAG", "Test" + results.getResultString());
+                            Log.i("TAG", "Test" + results.toString());
                             JSONObject joResult = new JSONObject(tokener);
 
                             JSONArray words = joResult.getJSONArray("ws");
@@ -245,9 +246,10 @@ public class MainActivity extends BaseActivity {
                         for (String key : hashMapTexts.keySet()) {
                             resultBuffer.append(hashMapTexts.get(key));
                         }
-                        result=resultBuffer.toString();
+                        result = resultBuffer.toString();
                         Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
                     }
+
                     @Override
                     public void onError(SpeechError error) {
                         // TODO 自动生成的方法存根
