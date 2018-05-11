@@ -14,8 +14,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -43,6 +45,7 @@ import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.MovieListInfo;
 import com.lzx.listenmovieapp.download.DownloadConfig;
 import com.lzx.listenmovieapp.http.Config;
+import com.lzx.listenmovieapp.util.FileSizeUtil;
 import com.lzx.listenmovieapp.util.ToastUtil;
 
 import java.io.File;
@@ -59,8 +62,11 @@ public class OnlineMovieActivity extends BaseActivity {
     @BindView(R.id.simpleExoPlayerView)
     SimpleExoPlayerView simpleExoPlayerView;
 
-    @BindView(R.id.btn_download)
-    Button btn_download;
+    @BindView(R.id.iv_download)
+    ImageView iv_download;
+
+    @BindView(R.id.tv_progress)
+    TextView tv_progress;
 
     @BindView(R.id.progressBar_download)
     ProgressBar progressBar_download;
@@ -134,7 +140,7 @@ public class OnlineMovieActivity extends BaseActivity {
 
     @Override
     protected void setListener() {
-        btn_download.setOnClickListener(this);
+        iv_download.setOnClickListener(this);
     }
 
     @Override
@@ -143,7 +149,7 @@ public class OnlineMovieActivity extends BaseActivity {
             default:
                 break;
 
-            case R.id.btn_download:
+            case R.id.iv_download:
                 setDownLoad();
                 break;
         }
@@ -156,12 +162,17 @@ public class OnlineMovieActivity extends BaseActivity {
                     progressBar_download.setProgress((int) (transferredBytes * 100 / totalSize));
                     Log.e("transferredBytes: ", transferredBytes + "");
                     Log.e("totalSize: ", totalSize + "");
+                    String _currentSize = FileSizeUtil.getFileFormatSize(transferredBytes);
+                    String _totalSize = FileSizeUtil.getFileFormatSize(totalSize);
+                    tv_progress.setText(_currentSize + "/" + _totalSize);
                 },
                 new HttpCallback() {
                     @Override
                     public void onFinish() {
                         super.onFinish();
                         ToastUtil.show(OnlineMovieActivity.this, "下载完成");
+                        iv_download.setImageResource(R.mipmap.ic_download_finish);
+                        tv_progress.setText("已下载");
                     }
 
                     @Override
@@ -172,6 +183,7 @@ public class OnlineMovieActivity extends BaseActivity {
                     @Override
                     public void onFailure(int errorNo, String strMsg) {
                         super.onFailure(errorNo, strMsg);
+                        iv_download.setImageResource(R.mipmap.ic_download);
                         new AlertDialog.Builder(OnlineMovieActivity.this)
                                 .setTitle(strMsg)
                                 .setMessage("是否重新下载？")
