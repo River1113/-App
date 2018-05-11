@@ -44,5 +44,6 @@ public class MyApplication extends Application {
         speaker.setParameter(SpeechConstant.KEY_REQUEST_FOCUS, "true");
         speaker.startSpeaking("您好，欢迎进入听影，我们将给您带来以下服务:影库资源请说1,下载专区请说2,重复请说0", null);
         super.onCreate();
+
     }
 }

@@ -72,7 +72,7 @@ public class MovieListActivity extends BaseActivity {
     }
 
     private void getMovieList() {
-        refreshLayout.setRefreshing(true);
+        changeRefreshStatus(true);
         HttpParams params = new HttpParams();
         //params.put("movieType", "movieType");//http://api.m.mtime.cn/PageSubArea/TrailerList.api
         RxVolley.get(Config.MOVIE_LIST_URL, params, new HttpCallback() {
@@ -84,16 +84,17 @@ public class MovieListActivity extends BaseActivity {
                 List<MovieListInfo> list = JsonUtil.jsonToList(result, MovieListInfo.class);
                 mData.addAll(list);
                 mAdapter.notifyDataSetChanged();
-                refreshLayout.setRefreshing(false);
+                changeRefreshStatus(false);
             }
 
             @Override
             public void onFailure(VolleyError error) {
                 super.onFailure(error);
-                refreshLayout.setRefreshing(false);
+                changeRefreshStatus(false);
             }
-        });
 
+
+        });
     }
 
     @Override
@@ -124,9 +125,7 @@ public class MovieListActivity extends BaseActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (refreshLayout != null) {
-                        refreshLayout.setRefreshing(false);
-                    }
+                    changeRefreshStatus(false);
                 }
             }, 2000);
         });
@@ -141,6 +140,12 @@ public class MovieListActivity extends BaseActivity {
             case R.id.tv_back:
                 finish();
                 break;
+        }
+    }
+
+    private void changeRefreshStatus(boolean refreshing) {
+        if (refreshLayout != null) {
+            refreshLayout.setRefreshing(refreshing);
         }
     }
 
