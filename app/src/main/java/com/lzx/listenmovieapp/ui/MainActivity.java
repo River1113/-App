@@ -1,10 +1,14 @@
 package com.lzx.listenmovieapp.ui;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,6 +36,8 @@ import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.HomeItem;
 import com.lzx.listenmovieapp.util.ToastUtil;
 import com.tmall.ultraviewpager.UltraViewPager;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.PermissionListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,6 +58,7 @@ import butterknife.BindView;
  * @author road
  */
 public class MainActivity extends BaseActivity {
+    private static final int CODE_PERMISSION = 1;
     @BindView(R.id.viewPager)
     UltraViewPager viewPager;
 
@@ -146,6 +153,29 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         initRecyclerView();
         initViewPager();
+        permissionReq();
+    }
+
+    private void permissionReq() {
+        AndPermission.with(this)
+                .requestCode(CODE_PERMISSION)
+                .permission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .callback(new PermissionListener() {
+                    @Override
+                    public void onSucceed(int requestCode, @NonNull List<String> grantPermissions) {
+
+                    }
+
+                    @Override
+                    public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage("存储权限被拒绝，需要开启")
+                                .setPositiveButton("确定", (dialogInterface, i) -> permissionReq())
+                                .create()
+                                .show();
+                    }
+                })
+                .start();
     }
 
     @Override

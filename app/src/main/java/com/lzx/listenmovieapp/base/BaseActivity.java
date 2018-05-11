@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.gyf.barlibrary.ImmersionBar;
-import com.lzx.listenmovieapp.R;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -52,7 +51,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
-     *设置LayoutId
+     * 设置LayoutId
+     *
      * @return layoutId
      */
     protected abstract int setLayoutId();
