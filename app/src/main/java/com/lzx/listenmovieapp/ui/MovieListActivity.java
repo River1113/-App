@@ -48,6 +48,7 @@ public class MovieListActivity extends BaseActivity {
     private String title;
     private List<MovieListInfo> mData;
     private BaseQuickAdapter mAdapter;
+
     @Override
     protected void initImmersionBar() {
         super.initImmersionBar();
@@ -105,14 +106,12 @@ public class MovieListActivity extends BaseActivity {
     private void initRecyclerView() {
         rv_list.setLayoutManager(new GridLayoutManager(this, 2));
         mAdapter = new MovieListAdapter(R.layout.item_movie_list, mData);
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                //点击跳转到在线播放视频路径
-                Intent intent = new Intent(MovieListActivity.this, OnlineMovieActivity.class);
-                intent.putExtra("url", mData.get(position).getUrl());
-                startActivity(intent);
-            }
+        mAdapter.setOnItemClickListener((BaseQuickAdapter adapter, View view, int position) -> {
+            //点击跳转到在线播放视频路径
+            Intent intent = new Intent(MovieListActivity.this, OnlineMovieActivity.class);
+            MovieListInfo info = mData.get(position);
+            intent.putExtra("movieListInfo", info);
+            startActivity(intent);
         });
         rv_list.setAdapter(mAdapter);
     }
@@ -121,18 +120,15 @@ public class MovieListActivity extends BaseActivity {
     protected void setListener() {
         tv_back.setOnClickListener(this);
 
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (refreshLayout != null) {
-                            refreshLayout.setRefreshing(false);
-                        }
+        refreshLayout.setOnRefreshListener(() -> {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (refreshLayout != null) {
+                        refreshLayout.setRefreshing(false);
                     }
-                }, 2000);
-            }
+                }
+            }, 2000);
         });
     }
 

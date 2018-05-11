@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lzx.listenmovieapp.R;
-import com.lzx.listenmovieapp.bean.MovieDownloadListInfo;
 import com.lzx.listenmovieapp.bean.MovieListInfo;
 
 import java.util.List;
@@ -17,14 +16,14 @@ import java.util.List;
  * Date  ：2018/4/26
  */
 
-public class MovieDownLoadListAdapter extends BaseQuickAdapter<MovieDownloadListInfo, BaseViewHolder> {
+public class MovieDownLoadListAdapter extends BaseQuickAdapter<MovieListInfo, BaseViewHolder> {
 
-    public MovieDownLoadListAdapter(int layoutResId, @Nullable List<MovieDownloadListInfo> data) {
+    public MovieDownLoadListAdapter(int layoutResId, @Nullable List<MovieListInfo> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, MovieDownloadListInfo item) {
+    protected void convert(BaseViewHolder helper, MovieListInfo item) {
         ImageView imageView = helper.getView(R.id.iv_item);
         Glide.with(mContext).load(item.getImg())
                 .centerCrop()

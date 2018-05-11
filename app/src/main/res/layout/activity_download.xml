@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <View style="@style/dividerStyle" />
 
@@ -31,10 +32,9 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:overScrollMode="never"
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp" />
+        android:overScrollMode="never" />
 
 </LinearLayout>

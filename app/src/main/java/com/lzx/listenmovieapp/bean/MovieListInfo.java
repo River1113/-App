@@ -1,4 +1,5 @@
 package com.lzx.listenmovieapp.bean;
+
 import java.io.Serializable;
 
 /**
@@ -6,13 +7,32 @@ import java.io.Serializable;
  * Date  ：2018/4/27
  */
 
-public class MovieListInfo implements Serializable{
+public class MovieListInfo implements Serializable {
     private String img;
     private String name;
     private String desc;
     private String score;
     private int movieType;
     private String url;
+    private long size;
+    private String movieName;
+
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
 
     public String getUrl() {
         return url;

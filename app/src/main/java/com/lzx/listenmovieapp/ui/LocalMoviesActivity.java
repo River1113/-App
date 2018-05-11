@@ -1,7 +1,6 @@
 package com.lzx.listenmovieapp.ui;
 
 import android.content.Intent;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,11 +8,9 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzx.listenmovieapp.R;
-import com.lzx.listenmovieapp.adapter.HomeAdapter;
 import com.lzx.listenmovieapp.adapter.MovieDownLoadListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
-import com.lzx.listenmovieapp.bean.HomeItem;
-import com.lzx.listenmovieapp.bean.MovieDownloadListInfo;
+import com.lzx.listenmovieapp.bean.MovieListInfo;
 import com.lzx.listenmovieapp.download.DownloadConfig;
 import com.lzx.listenmovieapp.util.ToastUtil;
 
@@ -39,7 +36,7 @@ public class LocalMoviesActivity extends BaseActivity {
     @BindView(R.id.rv_list)
     RecyclerView rv_list;
 
-    private List<MovieDownloadListInfo> mData;
+    private List<MovieListInfo> mData;
     private BaseQuickAdapter mAdapter;
 
     @Override
@@ -64,7 +61,7 @@ public class LocalMoviesActivity extends BaseActivity {
         }
         mData = new ArrayList<>();
         for (int i = 0; i < files.length; i++) {
-            MovieDownloadListInfo info = new MovieDownloadListInfo();
+            MovieListInfo info = new MovieListInfo();
             info.setImg("https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1709857625,355767256&fm=179&w=115&h=161&img.JPEG");
             info.setName(files[i].getName());
             info.setDesc("已下载");

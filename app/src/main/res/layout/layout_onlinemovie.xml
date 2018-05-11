@@ -1,33 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/activity_main"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp">
-    <!--tools:context="com.example.test_ijk.MainActivity"-->
 
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:onClick="start"
-        android:text="start play" />
-    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-        android:id="@+id/simpleExoPlayerView"
-        android:layout_gravity="left|top"
-        android:layout_centerInParent="true"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        />
+    <FrameLayout
+        android:id="@+id/rl_download"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_download"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="下载"
+            android:visibility="visible" />
+
+        <RelativeLayout
+            android:id="@+id/rl_download_progress"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_download_filesize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="45/100MB"
+                android:textColor="@color/txtMainColor" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_download"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_download_filesize"
+                android:layout_toLeftOf="@+id/tv_download_speed"
+                android:progress="45" />
+
+            <TextView
+                android:id="@+id/tv_download_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/progressBar_download"
+                android:layout_toLeftOf="@+id/tv_download_progress"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:text="4KB/s"
+                android:textColor="@color/txtMainColor" />
+
+            <TextView
+                android:id="@+id/tv_download_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/progressBar_download"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="45%"
+                android:textColor="@color/txtMainColor" />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_play"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_download">
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/start_download" />
+
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            android:id="@+id/simpleExoPlayerView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="left|top"
+            android:layout_marginBottom="10dp" />
 
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:visibility="gone"
-        class="com.google.android.exoplayer.VideoSurfaceView"
-        android:id="@+id/surfaceView"
-        android:layout_gravity="left|top"
-        android:layout_centerInParent="true" />
-
+        <View
+            android:id="@+id/surfaceView"
+            class="com.google.android.exoplayer.VideoSurfaceView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="left|top"
+            android:visibility="gone" />
+    </RelativeLayout>
 
 </RelativeLayout>
