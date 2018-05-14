@@ -11,8 +11,11 @@ import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.HomeAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.HomeItem;
+import com.lzx.listenmovieapp.util.GlideImageLoader;
+import com.youth.banner.Banner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,6 +35,9 @@ public class SourceActivity extends BaseActivity {
 
     @BindView(R.id.rv_list)
     RecyclerView rv_list;
+
+    @BindView(R.id.banner)
+    Banner banner;
 
     public static final String[] TITLES = {"动作",
             "冒险",
@@ -58,12 +64,32 @@ public class SourceActivity extends BaseActivity {
     private List<HomeItem> mData;
     private BaseQuickAdapter mAdapter;
 
+    public List<?> images;
+    public List<String> titles;
+
     @Override
     protected void initImmersionBar() {
         super.initImmersionBar();
         mImmersionBar.titleBarMarginTop(R.id.ll_title)
                 .statusBarColor(R.color.colorPrimary)
                 .init();
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (banner != null) {
+            banner.startAutoPlay();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (banner != null) {
+            banner.stopAutoPlay();
+        }
     }
 
     @Override
@@ -80,12 +106,22 @@ public class SourceActivity extends BaseActivity {
             item.setResId(IMAGES[i]);
             mData.add(item);
         }
+        String[] urls = getResources().getStringArray(R.array.source_banner_url);
+        String[] tips = getResources().getStringArray(R.array.source_banner_title);
+        images = new ArrayList(Arrays.asList(urls));
+        titles = new ArrayList(Arrays.asList(tips));
     }
 
     @Override
     protected void initView() {
         tv_title.setText("影库资源");
         initRecyclerView();
+
+        //默认是CIRCLE_INDICATOR
+        banner.setImages(images)
+                .setBannerTitles(titles)
+                .setImageLoader(new GlideImageLoader())
+                .start();
     }
 
     private void initRecyclerView() {
@@ -95,7 +131,7 @@ public class SourceActivity extends BaseActivity {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Intent intent = new Intent(SourceActivity.this, MovieListActivity.class);
-                intent.putExtra("title",mData.get(position).getTitle());
+                intent.putExtra("title", mData.get(position).getTitle());
                 startActivity(intent);
             }
         });

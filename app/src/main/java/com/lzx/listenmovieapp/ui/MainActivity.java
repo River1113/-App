@@ -31,21 +31,22 @@ import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.HomeAdapter;
-import com.lzx.listenmovieapp.adapter.HomePagerAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.HomeItem;
+import com.lzx.listenmovieapp.util.GlideImageLoader;
 import com.lzx.listenmovieapp.util.ToastUtil;
-import com.tmall.ultraviewpager.UltraViewPager;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -59,8 +60,6 @@ import butterknife.BindView;
  */
 public class MainActivity extends BaseActivity {
     private static final int CODE_PERMISSION = 1;
-    @BindView(R.id.viewPager)
-    UltraViewPager viewPager;
 
     @BindView(R.id.ll_voice)
     LinearLayout ll_voice;
@@ -68,13 +67,15 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.rv_list)
     RecyclerView rv_list;
 
-    private List<View> views;
-    public static final int[] VIEWPAGERS = {R.mipmap.viewpaer, R.mipmap.viewpaer,
-            R.mipmap.viewpaer, R.mipmap.viewpaer, R.mipmap.viewpaer
-    };
+    @BindView(R.id.banner)
+    Banner banner;
+
+    public List<?> images;
+    public List<String> titles;
 
     private BaseQuickAdapter mAdapter;
     private List<HomeItem> mData;
+
 
     //设置全局说出结果
     private String result;
@@ -116,8 +117,32 @@ public class MainActivity extends BaseActivity {
     };
 
     @Override
+    protected void initImmersionBar() {
+        super.initImmersionBar();
+        mImmersionBar.transparentStatusBar()
+                .statusBarDarkFont(true)
+                .init();
+    }
+
+    @Override
     protected int setLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (banner != null) {
+            banner.startAutoPlay();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (banner != null) {
+            banner.stopAutoPlay();
+        }
     }
 
     @Override
@@ -130,30 +155,22 @@ public class MainActivity extends BaseActivity {
             mData.add(item);
         }
 
-        views = new ArrayList<>();
-        // 将ImageView添加到view
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        for (int i = 0; i < VIEWPAGERS.length; i++) {
-            ImageView iv = new ImageView(this);
-            iv.setLayoutParams(params);
-            BitmapFactory.Options opt = new BitmapFactory.Options();
-            opt.inPreferredConfig = Bitmap.Config.RGB_565;
-            opt.inPurgeable = true;
-            opt.inInputShareable = true;
-            InputStream is = getResources().openRawResource(VIEWPAGERS[i]);
-            Bitmap bm = BitmapFactory.decodeStream(is, null, opt);
-            BitmapDrawable bd = new BitmapDrawable(getResources(), bm);
-            iv.setBackgroundDrawable(bd);
-            views.add(iv);
-        }
+        String[] urls = getResources().getStringArray(R.array.source_banner_url);
+        String[] tips = getResources().getStringArray(R.array.source_banner_title);
+        images = new ArrayList(Arrays.asList(urls));
+        titles = new ArrayList(Arrays.asList(tips));
     }
 
     @Override
     protected void initView() {
         initRecyclerView();
-        initViewPager();
         permissionReq();
+
+        banner.updateBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+        banner.setImages(images)
+                .setBannerTitles(titles)
+                .setImageLoader(new GlideImageLoader())
+                .start();
     }
 
     private void permissionReq() {
@@ -194,24 +211,6 @@ public class MainActivity extends BaseActivity {
             }
         });
         rv_list.setAdapter(mAdapter);
-    }
-
-    private void initViewPager() {
-        viewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
-        viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-        });
-        viewPager.setAdapter(new HomePagerAdapter(views));
-        viewPager.initIndicator();
-        viewPager.getIndicator().setOrientation(UltraViewPager.Orientation.HORIZONTAL)
-                .setFocusColor(Color.BLUE)
-                .setNormalColor(Color.WHITE)
-                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
-        viewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-        viewPager.getIndicator().build();
-        //设定页面循环播放
-        viewPager.setInfiniteLoop(true);
-        //设定页面自动切换  间隔2秒
-        viewPager.setAutoScroll(2500);
     }
 
     @Override
