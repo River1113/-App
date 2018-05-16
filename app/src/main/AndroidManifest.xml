@@ -39,7 +39,7 @@
         <activity android:name=".ui.DownLoadActivity" />
         <activity android:name=".ui.LocalMoviesActivity" />
         <activity android:name=".ui.RecentlyPlayedActivity" />
-        <activity android:name=".ui.CollectActivity" />
+        <activity android:name=".ui.MyDubbingActivity" />
         <activity android:name=".ui.RemotePlayedActivity" />
         <activity android:name=".ui.DubbingActivity" />
         <activity android:name=".ui.EventsActivity" />
@@ -53,6 +53,8 @@
         <activity android:name=".ui.AboutAppActivity" />
         <activity android:name=".ui.RecommendActivity" />
         <activity android:name=".ui.FeedBackActivity" />
+        <activity android:name=".ui.PlayDubbingActivity" />
+        <activity android:name=".ui.RecorderDubbingActivity" />
     </application>
 
 </manifest>

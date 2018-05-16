@@ -2,22 +2,12 @@ package com.lzx.listenmovieapp.ui;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -87,9 +77,9 @@ public class MainActivity extends BaseActivity {
             "影库资源",
             "下载电影",
             "最近播放",
-            "我的配音",
             "远程点播",
             "大众配音",
+            "我的配音",
             "活动专区",
             "设置",
             "我的",
@@ -99,9 +89,9 @@ public class MainActivity extends BaseActivity {
             R.mipmap.moviesource,
             R.mipmap.downloadmovies,
             R.mipmap.recentplay,
-            R.mipmap.collection,
             R.mipmap.longrange,
             R.mipmap.publicvoice,
+            R.mipmap.my_voice,
             R.mipmap.activityarea,
             R.mipmap.setting,
             R.mipmap.mine,
@@ -111,9 +101,9 @@ public class MainActivity extends BaseActivity {
             SourceActivity.class,
             DownLoadActivity.class,
             RecentlyPlayedActivity.class,
-            CollectActivity.class,
             RemotePlayedActivity.class,
             DubbingActivity.class,
+            MyDubbingActivity.class,
             EventsActivity.class,
             SetActivity.class,
             MyActivity.class,
@@ -287,7 +277,7 @@ public class MainActivity extends BaseActivity {
                             Intent it_1=new Intent(MainActivity.this, RecentlyPlayedActivity.class);
                             startActivity(it_1);
                         }else if(result.equals("三。")){
-                            Intent it_1=new Intent(MainActivity.this, CollectActivity.class);
+                            Intent it_1=new Intent(MainActivity.this, MyDubbingActivity.class);
                             startActivity(it_1);
                         }else if(result.equals("四。")){
                             Intent it_1=new Intent(MainActivity.this, RemotePlayedActivity.class);

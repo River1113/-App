@@ -11,7 +11,7 @@ import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.MovieDownLoadListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.MovieListInfo;
-import com.lzx.listenmovieapp.download.DownloadConfig;
+import com.lzx.listenmovieapp.download.StorageConfig;
 import com.lzx.listenmovieapp.util.ToastUtil;
 
 import java.io.File;
@@ -54,7 +54,7 @@ public class LocalMoviesActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        File file = DownloadConfig.getFilePath();
+        File file = StorageConfig.getVideoPath();
         File[] files = file.listFiles();
         if (files == null || files.length == 0) {
             return;

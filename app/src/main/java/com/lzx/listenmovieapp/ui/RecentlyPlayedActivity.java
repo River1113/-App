@@ -1,7 +1,6 @@
 package com.lzx.listenmovieapp.ui;
 
 import android.content.Intent;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.MovieDownLoadListAdapter;
-import com.lzx.listenmovieapp.adapter.MovieListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.MovieListInfo;
 
@@ -48,7 +46,7 @@ public class RecentlyPlayedActivity extends BaseActivity {
 
     @Override
     protected int setLayoutId() {
-        return R.layout.activity_history;
+        return R.layout.activity_dubbing;
     }
 
     @Override

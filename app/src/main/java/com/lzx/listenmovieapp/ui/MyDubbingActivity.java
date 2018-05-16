@@ -8,21 +8,23 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzx.listenmovieapp.R;
-import com.lzx.listenmovieapp.adapter.MovieDownLoadListAdapter;
+import com.lzx.listenmovieapp.adapter.AudioListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
-import com.lzx.listenmovieapp.bean.MovieListInfo;
+import com.lzx.listenmovieapp.download.StorageConfig;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
 
 /**
- * 收藏
+ * 我的配音
  *
  * @author cx
  */
-public class CollectActivity extends BaseActivity {
+public class MyDubbingActivity extends BaseActivity {
 
     @BindView(R.id.tv_title)
     TextView tv_title;
@@ -33,7 +35,7 @@ public class CollectActivity extends BaseActivity {
     @BindView(R.id.rv_list)
     RecyclerView rv_list;
 
-    List<MovieListInfo> mData = new ArrayList<>();
+    List<File> mData = new ArrayList<>();
     BaseQuickAdapter mAdapter;
 
     @Override
@@ -46,36 +48,33 @@ public class CollectActivity extends BaseActivity {
 
     @Override
     protected int setLayoutId() {
-        return R.layout.activity_history;
+        return R.layout.activity_dubbing;
     }
 
     @Override
     protected void initData() {
         mData = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            MovieListInfo info = new MovieListInfo();
-            info.setImg("https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1709857625,355767256&fm=179&w=115&h=161&img.JPEG");
-            info.setName("战狼");
-            info.setDesc("在南疆围捕贩毒分子的行动中,特种部队狙击手冷锋(吴京 饰)公然违抗上级的命令,开枪射杀伤害了战友的暴徒...");
-            info.setScore("");
-            mData.add(info);
+        File file = StorageConfig.getAudioPath();
+        File[] files = file.listFiles();
+        if (files == null || files.length == 0) {
+            return;
         }
+        mData.addAll(Arrays.asList(files));
     }
 
     @Override
     protected void initView() {
-        tv_title.setText("收藏");
+        tv_title.setText("我的配音");
         initRecyclerView();
     }
 
     private void initRecyclerView() {
         rv_list.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new MovieDownLoadListAdapter(R.layout.item_download_list, mData);
+        mAdapter = new AudioListAdapter(R.layout.item_audio_list, mData);
         mAdapter.setOnItemClickListener((BaseQuickAdapter adapter, View view, int position) -> {
-            //点击跳转到在线播放视频路径
-            Intent intent = new Intent(CollectActivity.this, OnlineMovieActivity.class);
-            MovieListInfo info = mData.get(position);
-            intent.putExtra("movieListInfo", info);
+            Intent intent = new Intent(MyDubbingActivity.this, PlayDubbingActivity.class);
+            File file = mData.get(position);
+            intent.putExtra("audio", file);
             startActivity(intent);
         });
         rv_list.setAdapter(mAdapter);

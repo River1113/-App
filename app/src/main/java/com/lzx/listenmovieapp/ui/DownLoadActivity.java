@@ -12,13 +12,8 @@ import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.MovieDownLoadListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
 import com.lzx.listenmovieapp.bean.MovieListInfo;
-import com.lzx.listenmovieapp.download.DownloadConfig;
-import com.lzx.listenmovieapp.download.DownloadEvent;
+import com.lzx.listenmovieapp.download.StorageConfig;
 import com.lzx.listenmovieapp.util.ToastUtil;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -66,7 +61,7 @@ public class DownLoadActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        File file = DownloadConfig.getFilePath();
+        File file = StorageConfig.getVideoPath();
         File[] files = file.listFiles();
         if (files == null || files.length == 0) {
             return;
@@ -77,7 +72,7 @@ public class DownLoadActivity extends BaseActivity {
             info.setImg("https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1709857625,355767256&fm=179&w=115&h=161&img.JPEG");
             info.setName(files[i].getName());
             info.setDesc("已下载");
-            info.setUrl(file.getAbsolutePath() +File.separator+ files[i].getName());
+            info.setUrl(file.getAbsolutePath() + File.separator + files[i].getName());
             mData.add(info);
         }
     }
