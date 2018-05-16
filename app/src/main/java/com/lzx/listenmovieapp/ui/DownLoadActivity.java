@@ -77,7 +77,7 @@ public class DownLoadActivity extends BaseActivity {
             info.setImg("https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1709857625,355767256&fm=179&w=115&h=161&img.JPEG");
             info.setName(files[i].getName());
             info.setDesc("已下载");
-            info.setScore(file.getAbsolutePath() + files[i].getName());
+            info.setUrl(file.getAbsolutePath() +File.separator+ files[i].getName());
             mData.add(info);
         }
     }
@@ -95,7 +95,7 @@ public class DownLoadActivity extends BaseActivity {
         mAdapter = new MovieDownLoadListAdapter(R.layout.item_download_list, mData);
         mAdapter.setOnItemClickListener((BaseQuickAdapter adapter, View view, int position) -> {
             Intent intent = new Intent(DownLoadActivity.this, LocalMoviePlayActivity.class);
-            intent.putExtra("path", mData.get(position).getScore());
+            intent.putExtra("path", mData.get(position).getUrl());
             startActivity(intent);
         });
         rv_list.setAdapter(mAdapter);
@@ -125,5 +125,4 @@ public class DownLoadActivity extends BaseActivity {
                 break;
         }
     }
-
 }

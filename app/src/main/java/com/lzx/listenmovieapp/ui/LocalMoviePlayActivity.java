@@ -115,6 +115,7 @@ public class LocalMoviePlayActivity extends BaseActivity {
             return;
         }
         path = getIntent().getStringExtra("path");
+        Toast.makeText(this,path,Toast.LENGTH_LONG).show();
         File file = new File(path);
         if (!file.exists()) {
             Toast.makeText(this, "文件不存在", Toast.LENGTH_LONG).show();

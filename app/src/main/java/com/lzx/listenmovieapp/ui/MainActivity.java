@@ -83,10 +83,11 @@ public class MainActivity extends BaseActivity {
     RecognizerDialog dialog;  //讯飞提示框
     private HashMap<String, String> hashMapTexts = new LinkedHashMap<String, String>();
 
-    public static final String[] TITLES = {"影库资源",
+    public static final String[] TITLES = {
+            "影库资源",
             "下载电影",
             "最近播放",
-            "收藏",
+            "我的配音",
             "远程点播",
             "大众配音",
             "活动专区",
@@ -94,18 +95,20 @@ public class MainActivity extends BaseActivity {
             "我的",
     };
 
-    public static final int[] IMAGES = {R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
+    public static final int[] IMAGES = {
+            R.mipmap.moviesource,
+            R.mipmap.downloadmovies,
+            R.mipmap.recentplay,
+            R.mipmap.collection,
+            R.mipmap.longrange,
+            R.mipmap.publicvoice,
+            R.mipmap.activityarea,
+            R.mipmap.setting,
+            R.mipmap.mine,
     };
 
-    private static final Class<?>[] ACTIVITYS = {SourceActivity.class,
+    private static final Class<?>[] ACTIVITYS = {
+            SourceActivity.class,
             DownLoadActivity.class,
             RecentlyPlayedActivity.class,
             CollectActivity.class,
@@ -277,6 +280,34 @@ public class MainActivity extends BaseActivity {
                         }
                         result = resultBuffer.toString();
                         Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
+                        if(result.equals("一。")){
+                            Intent it_1=new Intent(MainActivity.this, SourceActivity.class);
+                            startActivity(it_1);
+                        }else if(result.equals("二。")){
+                            Intent it_1=new Intent(MainActivity.this, RecentlyPlayedActivity.class);
+                            startActivity(it_1);
+                        }else if(result.equals("三。")){
+                            Intent it_1=new Intent(MainActivity.this, CollectActivity.class);
+                            startActivity(it_1);
+                        }else if(result.equals("四。")){
+                            Intent it_1=new Intent(MainActivity.this, RemotePlayedActivity.class);
+                            startActivity(it_1);
+                        }else if(result.equals("五。")){
+                            Intent it_1=new Intent(MainActivity.this, DubbingActivity.class);
+                            startActivity(it_1);
+                        }else if(result.equals("六。")){
+                            Intent it_1=new Intent(MainActivity.this, EventsActivity.class);
+                            startActivity(it_1);
+                        }else if(result.equals("七。")){
+                            Intent it_1=new Intent(MainActivity.this, EventsActivity.class);
+                            startActivity(it_1);
+                        }else if(result.equals("八。")){
+                            Intent it_1=new Intent(MainActivity.this, SetActivity.class);
+                            startActivity(it_1);
+                        }else if(result.equals("九。")){
+                            Intent it_1=new Intent(MainActivity.this, MyActivity.class);
+                            startActivity(it_1);
+                        }
                     }
 
                     @Override

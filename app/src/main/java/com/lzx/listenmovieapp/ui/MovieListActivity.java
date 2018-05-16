@@ -75,7 +75,8 @@ public class MovieListActivity extends BaseActivity {
         changeRefreshStatus(true);
         HttpParams params = new HttpParams();
         //params.put("movieType", "movieType");//http://api.m.mtime.cn/PageSubArea/TrailerList.api
-        RxVolley.get(Config.MOVIE_LIST_URL, params, new HttpCallback() {
+        //params.put("moveType",1);
+        RxVolley.get(Config.MOVIE_LIST_URL, params, new HttpCallback() {//Config.MOVIE_LIST_URL
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);

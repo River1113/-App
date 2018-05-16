@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -99,7 +100,7 @@ public class OnlineMovieActivity extends BaseActivity {
         }
         url = Config.RESOURCE_URL + info.getUrl();
         fileSize = info.getSize();
-        movieName = "摔跤吧爸爸.mp3";
+        movieName = info.getUrl().substring(info.getUrl().lastIndexOf("/")+1);//"摔跤吧爸爸.mp3"
     }
 
     @Override
@@ -157,6 +158,7 @@ public class OnlineMovieActivity extends BaseActivity {
 
     private void setDownLoad() {
         File dir = DownloadConfig.getFilePath();
+        Toast.makeText(this,dir.getAbsolutePath() + File.separator + movieName,Toast.LENGTH_LONG).show();
         RxVolley.download(dir.getAbsolutePath() + File.separator + movieName, url,
                 (transferredBytes, totalSize) -> {
                     progressBar_download.setProgress((int) (transferredBytes * 100 / totalSize));

@@ -50,15 +50,17 @@ public class SourceActivity extends BaseActivity {
             "其他",
     };
 
-    public static final int[] IMAGES = {R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
-            R.mipmap.ic_launcher_round,
+    public static final int[] IMAGES = {
+
+            R.mipmap.action,
+            R.mipmap.risk,
+            R.mipmap.interest,
+            R.mipmap.love,
+            R.mipmap.war,
+            R.mipmap.terror,
+            R.mipmap.sience,
+            R.mipmap.risky,
+            R.mipmap.other,
     };
 
     private List<HomeItem> mData;

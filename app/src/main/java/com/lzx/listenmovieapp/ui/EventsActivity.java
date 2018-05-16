@@ -1,5 +1,4 @@
 package com.lzx.listenmovieapp.ui;
-
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -7,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
@@ -25,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-
 /**
  * 活动专区
  *
@@ -72,7 +69,7 @@ public class EventsActivity extends BaseActivity {
         refreshLayout.setRefreshing(true);
         HttpParams params = new HttpParams();
         //params.put("movieType", "movieType");//http://api.m.mtime.cn/PageSubArea/TrailerList.api
-        RxVolley.get(Config.EVENTS_URL, params, new HttpCallback() {
+        RxVolley.get(Config.EVENTS_URL, params, new HttpCallback() {//Config.EVENTS_URL
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);
