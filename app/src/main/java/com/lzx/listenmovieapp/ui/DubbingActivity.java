@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.kymjs.rxvolley.toolbox.Loger;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.adapter.AudioListAdapter;
 import com.lzx.listenmovieapp.base.BaseActivity;
@@ -57,8 +58,14 @@ public class DubbingActivity extends BaseActivity {
     @Override
     protected void initData() {
         mData = new ArrayList<>();
-
-        getLrcText("成都.lrc");
+        File file = new File("assets/成都.lrc");
+        mData.add(file);
+//        try {
+//            writeBytesToFile(DubbingActivity.this.getAssets().open("成都.lrc"), file);
+//            mData.add(file);
+//        } catch (Exception e) {
+//            Log.e("error", e.getMessage());
+//        }
     }
 
     @Override
@@ -96,19 +103,21 @@ public class DubbingActivity extends BaseActivity {
         }
     }
 
-
-    private String getLrcText(String fileName) {
-        String lrcText = null;
+    public void writeBytesToFile(InputStream is, File file) throws IOException {
+        FileOutputStream fos = null;
         try {
-            InputStream is = getAssets().open(fileName);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            lrcText = new String(buffer);
-        } catch (IOException e) {
-            e.printStackTrace();
+            byte[] data = new byte[2048];
+            int nbread = 0;
+            fos = new FileOutputStream(file);
+            while ((nbread = is.read(data)) > -1) {
+                fos.write(data, 0, nbread);
+            }
+        } catch (Exception ex) {
+            Log.e("TAG", ex.getMessage());
+        } finally {
+            if (fos != null) {
+                fos.close();
+            }
         }
-        return lrcText;
     }
 }
