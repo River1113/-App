@@ -11,8 +11,10 @@ import android.widget.TextView;
 import com.lzx.listenmovieapp.R;
 import com.lzx.listenmovieapp.base.BaseActivity;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 
 import butterknife.BindView;
 import me.wcy.lrcview.LrcView;
@@ -41,6 +43,7 @@ public class PlayDubbingActivity extends BaseActivity {
 
     private MediaPlayer mediaPlayer = new MediaPlayer();
     private Handler handler = new Handler();
+    private File audio;
 
     @Override
     protected void initImmersionBar() {
@@ -57,7 +60,7 @@ public class PlayDubbingActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        audio = (File) getIntent().getSerializableExtra("audio");
     }
 
     @Override
@@ -69,8 +72,9 @@ public class PlayDubbingActivity extends BaseActivity {
     private void configMedia() {
         try {
             mediaPlayer.reset();
-            AssetFileDescriptor fileDescriptor = getAssets().openFd("chengdu.mp3");
-            mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(), fileDescriptor.getStartOffset(), fileDescriptor.getLength());
+//            AssetFileDescriptor fileDescriptor = getAssets().openFd("chengdu.mp3");
+
+            mediaPlayer.setDataSource(audio.getAbsolutePath());
             mediaPlayer.prepareAsync();
             mediaPlayer.setOnPreparedListener((mp) -> {
                 seekBar.setMax(mediaPlayer.getDuration());
